@@ -1,23 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+const API_KEY = process.env.REACT_APP_OMDB_API_KEY
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reacts
-        </a>
-      </header>
+    <div>
+      <p></p>
     </div>
   );
 }
