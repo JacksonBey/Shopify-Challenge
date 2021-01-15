@@ -1,10 +1,11 @@
 import './App.css';
+import MovieDisplay from './Containers/MovieDisplay'
 
 
 function App() {
   return (
     <div>
-      <p></p>
+      <MovieDisplay />
     </div>
   );
 }

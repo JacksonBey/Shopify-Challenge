@@ -9,16 +9,14 @@ export default class MovieDisplay extends Component {
 
 
     componentDidMount() {
-
+        this.fetchMovies()
     }
 
     fetchMovies = () => {
-        fetch('http://localhost:3001/users', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }}).then(res => res.json())
+        fetch('http://www.omdbapi.com/?i=tt3896198&apikey=' + API_KEY + '&t=yo', {
+            method: 'GET'}).then(res => res.json())
             .then(data => {
+                console.log(data)
                 this.setState({
                     movieList: data
                 })
@@ -28,7 +26,7 @@ export default class MovieDisplay extends Component {
     render() {
         return(
             <div>
-                <p>hi from movie container</p>
+                <p>hi from movie display</p>
             </div>
         )
     }
