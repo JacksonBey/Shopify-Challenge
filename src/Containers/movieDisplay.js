@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+
+import MovieCard from '../Components/MovieCard'
+
+
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY
 
 export default class MovieDisplay extends Component {
 
     state = {
-        movieList: []
+        nominated: [],
+        results: []
     }
 
 
@@ -13,20 +18,24 @@ export default class MovieDisplay extends Component {
     }
 
     fetchMovies = () => {
-        fetch('http://www.omdbapi.com/?i=tt3896198&apikey=' + API_KEY + '&t=yo', {
+        fetch('http://www.omdbapi.com/?i=tt3896198&apikey=' + API_KEY + '&s=ram', {
             method: 'GET'}).then(res => res.json())
             .then(data => {
                 console.log(data)
                 this.setState({
-                    movieList: data
+                    results: data
                 })
             })
     }
 
+
+
     render() {
+        console.log(this.state.results)
         return(
             <div>
                 <p>hi from movie display</p>
+                {/* {this.state.results.map((result, idx) => <MovieCard key={idx} movie={result} />)} */}
             </div>
         )
     }
