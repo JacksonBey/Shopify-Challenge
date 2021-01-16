@@ -6,7 +6,7 @@ export default class MovieCard extends Component {
     render() {
         return(
             <div>
-                <p>hi from movieCard</p>
+                <p>{this.props.idx} {this.props.result.Title}</p>
             </div>
         )
     }

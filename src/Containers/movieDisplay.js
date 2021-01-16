@@ -3,40 +3,39 @@ import React, {Component} from 'react';
 import MovieCard from '../Components/MovieCard'
 
 
-const API_KEY = process.env.REACT_APP_OMDB_API_KEY
+
 
 export default class MovieDisplay extends Component {
 
-    state = {
-        nominated: [],
-        results: []
+    // state = {
+    //     nominated: [],
+    //     results: []
+    // }
+
+
+    shouldComponentUpdate(nextProps) {
+       return this.props !== nextProps
     }
 
 
-    componentDidMount() {
-        this.fetchMovies()
-    }
 
-    fetchMovies = () => {
-        fetch('http://www.omdbapi.com/?i=tt3896198&apikey=' + API_KEY + '&s=ram', {
-            method: 'GET'}).then(res => res.json())
-            .then(data => {
-                console.log(data)
-                this.setState({
-                    results: data
-                })
-            })
+    produceCards = (results) => {
+        results.map(result => console.log(result))
     }
 
 
 
     render() {
-        console.log(this.state.results)
+        // console.log(this.state)
+        // console.log(this.state.results.Search)
+        console.log(this.props.movies)
         return(
             <div>
                 <p>hi from movie display</p>
-                <p>{this.props.query}</p>
-                {/* {this.state.results.map((result, idx) => <MovieCard key={idx} movie={result} />)} */}
+                {/* <p>{this.props.query}</p> */}
+                {this.props.movies.length !== 0 ?  this.props.movies.map((result, idx) => {
+                return <MovieCard key={idx} result={result} />}) : null}
+               {/* <MovieCard /> */}
             </div>
         )
     }
