@@ -35,6 +35,7 @@ export default class MovieDisplay extends Component {
         return(
             <div>
                 <p>hi from movie display</p>
+                <p>{this.props.query}</p>
                 {/* {this.state.results.map((result, idx) => <MovieCard key={idx} movie={result} />)} */}
             </div>
         )
