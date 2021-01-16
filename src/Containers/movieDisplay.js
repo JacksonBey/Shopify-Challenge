@@ -30,12 +30,16 @@ export default class MovieDisplay extends Component {
         // console.log(this.state.results.Search)
         console.log(this.props.movies)
         return(
-            <div>
-                <p>hi from movie display</p>
+            <div style={{display: 'inline-block'}}>
+                
+            <div style={{display: 'inline-block'}}>
                 {/* <p>{this.props.query}</p> */}
+                {this.props.query !== '' ? <h3>Results for "{this.props.query}"</h3>: null}
                 {this.props.movies.length !== 0 ?  this.props.movies.map((result, idx) => {
                 return <MovieCard key={idx} result={result} />}) : null}
                {/* <MovieCard /> */}
+            </div>
+                
             </div>
         )
     }

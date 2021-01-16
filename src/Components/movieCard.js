@@ -4,9 +4,10 @@ export default class MovieCard extends Component {
 
 
     render() {
+        let {Title, Year} = this.props.result
         return(
             <div>
-                <p>{this.props.idx} {this.props.result.Title}</p>
+                <p>{Title} ({Year})</p> <button>Nominate</button>
             </div>
         )
     }

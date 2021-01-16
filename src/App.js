@@ -2,19 +2,21 @@ import './App.css';
 import MovieDisplay from './Containers/MovieDisplay'
 import SearchBar from './Components/SearchBar'
 import React, {Component} from 'react';
+import NominationDisplay from './Containers/NominationDisplay'
 
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY
 
 export default class App extends Component {
 
   state = {
-    results: []
+    results: [],
+    query: ''
   }
 
   onSearch = (query) => {
-    // this.setState({
-    //   query
-    // })
+    this.setState({
+      query
+    })
     this.fetchMovies(query)
   }
 
@@ -32,7 +34,8 @@ render(){
   return (
     <div>
       <SearchBar onSearch={this.onSearch}/>
-      <MovieDisplay movies={this.state.results}/>
+      <MovieDisplay movies={this.state.results} query={this.state.query}/>
+      <NominationDisplay />
     </div>
   );
 }
