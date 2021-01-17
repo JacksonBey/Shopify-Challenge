@@ -36,21 +36,36 @@ fetchMovies = (query) => {
 }
 
 handleNominate = (movie) => {
-  if (this.state.nominated.length < 5){
+  if (this.state.nominated.length < 4){
     this.setState({
-      nominated: [...nominated, movie]
+      nominated: [...this.state.nominated, movie]
     })
-  } else {
+  } else if(this.state.nominated.length < 5){
     this.setBanner()
+    this.setState({
+      nominated: [...this.state.nominated, movie]
+    })
   }
+}
+
+setBanner = () => {
+  //set a banner here when 5 are nominated
+}
+
+removeNominate = (movie) => {
+  let newState = this.state.nominated.filter((m) => m.Title !== movie.Title)
+  this.setState({
+    nominated: newState
+  })
+
 }
 
 render(){
   return (
     <div>
       <SearchBar onSearch={this.onSearch}/>
-      <MovieDisplay movies={this.state.results} query={this.state.query} handleNominate={this.handleNominate}/>
-      <NominationDisplay />
+      <MovieDisplay movies={this.state.results} query={this.state.query} nominated={this.state.nominated} handleNominate={this.handleNominate}/>
+      <NominationDisplay nominated={this.state.nominated} removeNominate={this.removeNominate}/>
     </div>
   );
 }
