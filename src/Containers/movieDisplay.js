@@ -19,9 +19,9 @@ export default class MovieDisplay extends Component {
 
 
 
-    produceCards = (results) => {
-        results.map(result => console.log(result))
-    }
+    // produceCards = (results) => {
+    //     results.map(result => console.log(result))
+    // }
 
 
 
@@ -36,7 +36,7 @@ export default class MovieDisplay extends Component {
                 {/* <p>{this.props.query}</p> */}
                 {this.props.query !== '' ? <h3>Results for "{this.props.query}"</h3>: null}
                 {this.props.movies.length !== 0 ?  this.props.movies.map((result, idx) => {
-                return <MovieCard key={idx} result={result} />}) : null}
+                return <MovieCard key={idx} result={result} handleNominate={this.props.handleNominate}/>}) : null}
                {/* <MovieCard /> */}
             </div>
                 
