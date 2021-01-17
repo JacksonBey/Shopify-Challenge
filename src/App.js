@@ -3,6 +3,7 @@ import MovieDisplay from './Containers/MovieDisplay'
 import SearchBar from './Components/SearchBar'
 import React, {Component} from 'react';
 import NominationDisplay from './Containers/NominationDisplay'
+import Banner from './images/Banner.png'
 
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY
 
@@ -64,6 +65,7 @@ render(){
   return (
     <div>
       <SearchBar onSearch={this.onSearch}/>
+      {this.state.nominated.length === 5 ? <img src={Banner}style={{display: 'inline-block', height: '2%', width: '100%' }}/>:null}
       <MovieDisplay movies={this.state.results} query={this.state.query} nominated={this.state.nominated} handleNominate={this.handleNominate}/>
       <NominationDisplay nominated={this.state.nominated} removeNominate={this.removeNominate}/>
     </div>
